@@ -1,0 +1,10 @@
+sdl/
+SDL2.dll
+*.exe
+.vscode
+
+
+windows/
+web/
+
+*.zip

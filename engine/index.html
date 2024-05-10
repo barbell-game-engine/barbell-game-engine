@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>      
+</head>
+<body>
+    <button id="startButton">Start Game</button>
+    <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+    <script type='text/javascript'>
+        var Module = {
+            canvas: (function() { return document.getElementById('canvas'); })()
+        };
+
+        // Function to load index.js file
+        function loadIndexScript() {
+            var script = document.createElement('script');
+            script.src = 'index.js';
+            document.body.appendChild(script);
+            // Hide the button after it's clicked
+            document.getElementById('startButton').style.display = 'none';
+        }
+
+        // Event listener for button click
+        document.getElementById('startButton').addEventListener('click', function() {
+            loadIndexScript();
+        });
+    </script>
+</body>
+</html>
