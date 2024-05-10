@@ -1,6 +1,7 @@
 SRCDIR = src
 INCLUDEDIR = include
 SDLDIR = sdl
+SDL_VERSION = 2.30.3
 WIN_DIST_DIR = windows
 WEB_DIST_DIR = web
 
@@ -17,12 +18,12 @@ windows:
 	g++ engine/win_main.cc $(SRCS) -o $(WIN_DIST_DIR)/main \
 	-I$(INCLUDEDIR) \
 	-I$(SRCDIR) \
-	-I$(SDLDIR)/SDL2-2.30.2/x86_64-w64-mingw32/include \
-	-L$(SDLDIR)/SDL2-2.30.2/x86_64-w64-mingw32/lib  \
+	-I$(SDLDIR)/SDL2-$(SDL_VERSION)/x86_64-w64-mingw32/include \
+	-L$(SDLDIR)/SDL2-$(SDL_VERSION)/x86_64-w64-mingw32/lib  \
 	-lmingw32 \
 	-lSDL2main \
 	-lSDL2
-	copy $(SDLDIR)\SDL2-2.30.2\x86_64-w64-mingw32\bin\SDL2.dll $(WIN_DIST_DIR)
+	copy $(SDLDIR)\SDL2-$(SDL_VERSION)\x86_64-w64-mingw32\bin\SDL2.dll $(WIN_DIST_DIR)
 	mkdir $(WIN_DIST_DIR)\assets
 	xcopy assets $(WIN_DIST_DIR)\assets /e
 
