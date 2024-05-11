@@ -34,6 +34,7 @@ int DevMain::DeInit(){
   delete audio;
   delete viewer;
 
+  SDL_Quit();
+
   return 0;
-  // test
 }

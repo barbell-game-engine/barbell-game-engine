@@ -12,7 +12,6 @@ Viewer::Viewer(){
 Viewer::~Viewer(){
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
-  SDL_Quit();
 }
 
 void Viewer::OpenRender(){
