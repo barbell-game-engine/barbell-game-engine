@@ -5,19 +5,14 @@
 #endif
 
 DevMain devMain;
-int initCode;
-int updateCode;
-int deinitCode;
 
-int Init(){
-  devMain = DevMain();
-  initCode = devMain.Init();
 
-  return initCode;
+int init(){
+  return devMain.Init();
 }
 
-int MainLoop(){
-  updateCode = devMain.Update();
+void mainloop(){
+  devMain.Update();
 
   if (devMain.Quit()){
     #ifdef __EMSCRIPTEN__
@@ -27,18 +22,26 @@ int MainLoop(){
     #endif
   }
 
-  return updateCode;
+}
+
+int deinit(){
+  return devMain.DeInit();
 }
 
 
-int main(){
+int main(int argc, char* argv[])
+{
+  int initCode = init();
+  std::cout << "Initialized with code: " << initCode << std::endl;
+
   #ifdef __EMSCRIPTEN__
-  emscripten_set_main_loop(MainLoop, 0, 1);
+  emscripten_set_main_loop(mainloop, 0, 1);
   #else
-  while(1){MainLoop();};
+  while(1){mainloop();};
   #endif
 
-  deinitCode = devMain.DeInit();
+  int deinitCode = devMain.DeInit();
+  std::cout << "DeInitialized with code: " << deinitCode << std::endl;
 
-  return deinitCode;
+  return 0;
 }

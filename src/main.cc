@@ -4,9 +4,9 @@
 
 int DevMain::Init() {
   // put your initialization logic here
-  player = new Player();
   viewer = new Viewer();
   audio = new AudioPlayer();
+  player = new Player();
   return 0;
 }
 
