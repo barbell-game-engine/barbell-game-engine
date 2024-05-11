@@ -7,9 +7,7 @@ int DevMain::Init() {
   viewer = new Viewer();
   audio = new AudioPlayer();
   player = new Player();
-  inputs = InputSingleton::GetInstance();
 
-  quit = false;
   return 0;
 }
 
@@ -24,17 +22,11 @@ int DevMain::Update() {
   player->Render(viewer->GetRenderer());
   viewer->CloseRender();
 
-  if (inputs->quit){
-    quit = true;
-  }
   return 0;
 
   SDL_Delay(16);
 }
 
-bool DevMain::Quit(){
-  return quit;
-}
 
 int DevMain::DeInit(){
   delete player;

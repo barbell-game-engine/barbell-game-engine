@@ -1,49 +1,40 @@
-#include <SDL2/SDL.h>
+#include "inputs.hh"
+
 #include "main.hh"
+
+DevMain devMain;
+InputSingleton* inputs;
 
 #ifdef __EMSCRIPTEN__
 #include "emscripten.h"
 #endif
 
-DevMain devMain;
-
-
-int init(){
-  devMain = DevMain();
-  return devMain.Init();
-}
-
 void mainloop(){
   devMain.Update();
-
-  if (devMain.Quit()){
+    
+  inputs->Update();
+  if (inputs->quit){
     #ifdef __EMSCRIPTEN__
     emscripten_cancel_main_loop();
     #else
     exit(0);
     #endif
   }
-
 }
-
-int deinit(){
-  return devMain.DeInit();
-}
-
 
 int main(int argc, char* argv[])
 {
-  int initCode = init();
-  std::cout << "Initialized with code: " << initCode << std::endl;
+  devMain = DevMain();
+  devMain.Init();
+
+  inputs = InputSingleton::GetInstance();
 
   #ifdef __EMSCRIPTEN__
   emscripten_set_main_loop(mainloop, 0, 1);
   #else
-  while(1){mainloop();};
+  while (1){mainloop();}
   #endif
 
-  int deinitCode = devMain.DeInit();
-  std::cout << "DeInitialized with code: " << deinitCode << std::endl;
-
+  devMain.DeInit();
   return 0;
 }

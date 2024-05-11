@@ -15,7 +15,7 @@ all:
 windows:
 	if exist $(WIN_DIST_DIR) rmdir /s /q $(WIN_DIST_DIR)
 	mkdir $(WIN_DIST_DIR)
-	g++ engine/win_main.cc $(SRCS) -o $(WIN_DIST_DIR)/main \
+	g++ engine/engine_main.cc $(SRCS) -o $(WIN_DIST_DIR)/main \
 	-I$(INCLUDEDIR) \
 	-I$(SRCDIR) \
 	-I$(SDLDIR)/SDL2-$(SDL_VERSION)/x86_64-w64-mingw32/include \
@@ -33,7 +33,7 @@ web:
 	copy engine\index.html $(WEB_DIST_DIR)
 	mkdir $(WEB_DIST_DIR)\assets
 	xcopy assets $(WEB_DIST_DIR)\assets /e
-	emcc engine/win_main.cc $(SRCS) -o $(WEB_DIST_DIR)/index.js \
+	emcc engine/engine_main.cc $(SRCS) -o $(WEB_DIST_DIR)/index.js \
 	-I$(INCLUDEDIR) \
 	-I$(SRCDIR) \
 	-s USE_SDL=2 \

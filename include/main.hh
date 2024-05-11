@@ -10,16 +10,11 @@ class DevMain {
 public:
   int Init();
   int Update();
-  bool Quit();
   int DeInit();
 
   Viewer* viewer;
   Player* player;
   AudioPlayer* audio;
-  InputSingleton* inputs;
-
-private:
-  bool quit;
 };
 
 
