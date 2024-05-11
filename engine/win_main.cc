@@ -7,6 +7,18 @@
 DevMain devMain;
 InputSingleton* inputs;
 
+#ifdef __EMSCRIPTEN__
+#include "emscripten.h"
+#endif
+
+void mainloop(){
+  devMain.Update();
+    
+  inputs->Update();
+  if (inputs->quit){
+    exit(0);
+  }
+}
 
 int main(int argc, char* argv[])
 {
@@ -15,14 +27,11 @@ int main(int argc, char* argv[])
 
   inputs = InputSingleton::GetInstance();
 
-  while (1){
-    devMain.Update();
-    
-    inputs->Update();
-    if (inputs->quit){
-      exit(0);
-    }
-  }
+  #ifdef __EMSCRIPTEN__
+  emscripten_set_main_loop(mainloop, 0, 1);
+  #else
+  while (1){mainloop();}
+  #endif
 
   devMain.DeInit();
   return 0;
