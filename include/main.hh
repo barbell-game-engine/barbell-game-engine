@@ -9,6 +9,8 @@ class DevMain {
 public:
   int Init();
   int Update();
+  bool Quit();
+  int DeInit();
 
   Viewer* viewer;
   Player* player;

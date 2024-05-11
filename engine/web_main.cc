@@ -46,5 +46,7 @@ int main(int argc, char* argv[])
   emscripten_set_main_loop(mainloop, 0, 1);
   #endif
 
+  devMain.DeInit();
+
   return 0;
 }

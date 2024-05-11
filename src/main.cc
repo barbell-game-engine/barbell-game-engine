@@ -21,3 +21,18 @@ int DevMain::Update() {
   viewer->CloseRender();
   return 0;
 }
+
+bool DevMain::Quit(){
+  if (InputSingleton::GetInstance()->quit){
+    return true;
+  }
+  return false;
+}
+
+int DevMain::DeInit(){
+  delete player;
+  delete audio;
+  delete viewer;
+
+  return 0;
+}

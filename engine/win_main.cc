@@ -23,5 +23,7 @@ int main(int argc, char* argv[])
       exit(0);
     }
   }
+
+  devMain.DeInit();
   return 0;
 }
