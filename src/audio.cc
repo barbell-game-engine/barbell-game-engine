@@ -38,7 +38,6 @@ AudioPlayer::~AudioPlayer(){
   // Cleanup
   SDL_CloseAudioDevice(audioDevice);
   SDL_FreeWAV(wavBuffer);
-  SDL_Quit();
 }
 
 void AudioPlayer::PlaySound(){

@@ -8,6 +8,7 @@
 class Player{
 public:
   Player();
+  ~Player();
 
   void Update();
   void Render(SDL_Renderer* renderer);

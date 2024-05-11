@@ -16,6 +16,10 @@ Player::Player(){
   UpdateRectPos();
 }
 
+Player::~Player(){
+  delete rect;
+}
+
 void Player::Update(){
   if (inputs->s_down){
     y += speed;
