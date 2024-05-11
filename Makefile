@@ -33,7 +33,7 @@ web:
 	copy engine\index.html $(WEB_DIST_DIR)
 	mkdir $(WEB_DIST_DIR)\assets
 	xcopy assets $(WEB_DIST_DIR)\assets /e
-	emcc engine/web_main.cc $(SRCS) -o $(WEB_DIST_DIR)/index.js \
+	emcc engine/win_main.cc $(SRCS) -o $(WEB_DIST_DIR)/index.js \
 	-I$(INCLUDEDIR) \
 	-I$(SRCDIR) \
 	-s USE_SDL=2 \

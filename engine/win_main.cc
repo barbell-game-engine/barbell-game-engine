@@ -16,7 +16,11 @@ void mainloop(){
     
   inputs->Update();
   if (inputs->quit){
+    #ifdef __EMSCRIPTEN__
+    emscripten_cancel_main_loop();
+    #else
     exit(0);
+    #endif
   }
 }
 
