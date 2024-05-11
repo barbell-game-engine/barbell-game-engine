@@ -3,6 +3,7 @@ INCLUDEDIR = include
 SDLDIR = sdl
 SDL_VERSION = 2.30.3
 WIN_DIST_DIR = windows
+MAC_DIST_DIR = macOS
 WEB_DIST_DIR = web
 
 SRCS = $(wildcard $(SRCDIR)/*.cc)
@@ -27,8 +28,20 @@ windows:
 	mkdir $(WIN_DIST_DIR)\assets
 	xcopy assets $(WIN_DIST_DIR)\assets /e
 
+macos:
+	mkdir $(MAC_DIST_DIR)
+	g++ -std=c++11 engine/engine_main.cc -o main.exe \
+	`$/(SDLDIR)/SDL-$(SDL_VERSION)/i686-w64-mingw32/bin/sdl2-config --cflags`\
+	`$/(SDLDIR)/SDL-$(SDL_VERSION)/i686-w64-mingw32/bin/sdl2-config --libs` \
+	-I$(INCLUDEDIR) \
+	-I$(SRCDIR)
+	cp $(SDLDIR)/SDL2-$(SDL_VERSION)/x86_64-w64-mingw32/bin/SDL2.dll $(MAC_DIST_DIR)
+	mkdir $(MAC_DIST_DIR)/assets
+	cp assets $(WIN_DIST_DIR)/assets /e
+
+
 web:
-	if exist $(WEB_DIST_DIR) rmdir /s /q $(WEB_DIST_DIR)	
+	if exist $(WEB_DIST_DIR) rmdir /s /q $(WEB_DIST_DIR)
 	mkdir $(WEB_DIST_DIR)
 	copy engine\index.html $(WEB_DIST_DIR)
 	mkdir $(WEB_DIST_DIR)\assets
@@ -40,6 +53,6 @@ web:
 	-s USE_SDL_IMAGE=2 \
 	-s SDL2_IMAGE_FORMATS='["png"]' \
 	--preload-file assets/
-	
 
-.PHONY: web windows
+
+.PHONY: web windows macos

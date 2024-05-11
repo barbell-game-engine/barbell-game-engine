@@ -8,3 +8,5 @@ windows/
 web/
 
 *.zip
+
+.DS_Store
