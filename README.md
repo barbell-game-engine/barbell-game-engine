@@ -33,7 +33,7 @@ root/
 
 # Todo:
 - [X] Figure out how to build for webasm using [emcc](https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_Wasm) resource: [making a wasm game](https://robaboukhalil.medium.com/porting-games-to-the-web-with-webassembly-70d598e1a3ec)
-- [ ] Make a single main.cc file that can build for web or for windows 
+- [x] Make a single main.cc file that can build for web or for windows 
 
 
 # Useful websites
