@@ -1,5 +1,3 @@
-#include <SDL2/SDL.h>
-#include "player.hh"
 #include "inputs.hh"
 
 #include "main.hh"
