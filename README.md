@@ -15,6 +15,8 @@ How to set up g++ and make:
 ## Setting up environment on macOS
 
 - Get the developer tools that include git, make, These come with the operating system. If you run 'git' in the terminal, it will ask you if you want to install the developer tools.
+- [Resource:](https://medium.com/@edkins.sarah/set-up-sdl2-on-your-mac-without-xcode-6b0c33b723f7)
+- I tried [this](https://wiki.libsdl.org/SDL2/Installation) but SDL wants me to use xcode... I would rather not
 
 ## How to set up emscription:
 
