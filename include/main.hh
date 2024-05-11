@@ -4,6 +4,7 @@
 #include "viewer.hh"
 #include "player.hh"
 #include "audio.hh"
+#include "inputs.hh"
 
 class DevMain {
 public:
@@ -15,6 +16,10 @@ public:
   Viewer* viewer;
   Player* player;
   AudioPlayer* audio;
+  InputSingleton* inputs;
+
+private:
+  bool quit;
 };
 
 

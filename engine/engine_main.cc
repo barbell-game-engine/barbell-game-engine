@@ -1,3 +1,4 @@
+#include <SDL2/SDL.h>
 #include "main.hh"
 
 #ifdef __EMSCRIPTEN__
@@ -8,6 +9,7 @@ DevMain devMain;
 
 
 int init(){
+  devMain = DevMain();
   return devMain.Init();
 }
 
