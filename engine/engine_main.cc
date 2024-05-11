@@ -1,5 +1,3 @@
-#include "inputs.hh"
-
 #include "main.hh"
 
 DevMain devMain;
@@ -12,8 +10,7 @@ InputSingleton* inputs;
 void mainloop(){
   devMain.Update();
     
-  inputs->Update();
-  if (inputs->quit){
+  if (devMain.Quit()){
     #ifdef __EMSCRIPTEN__
     emscripten_cancel_main_loop();
     #else

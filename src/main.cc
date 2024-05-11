@@ -7,13 +7,15 @@ int DevMain::Init() {
   viewer = new Viewer();
   audio = new AudioPlayer();
   player = new Player();
+  inputs = InputSingleton::GetInstance();
 
   return 0;
 }
 
 int DevMain::Update() {
   // put your update logic here
-  std::cout << "Updating" << std::endl;
+  inputs->Update();
+
   player->Update();
 
   audio->Update();
@@ -36,4 +38,11 @@ int DevMain::DeInit(){
   SDL_Quit();
 
   return 0;
+}
+
+bool DevMain::Quit(){
+  if (inputs->quit){
+    return true;
+  }
+  return false;
 }

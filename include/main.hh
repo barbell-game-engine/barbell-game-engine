@@ -11,10 +11,12 @@ public:
   int Init();
   int Update();
   int DeInit();
+  bool Quit();
 
   Viewer* viewer;
   Player* player;
   AudioPlayer* audio;
+  InputSingleton* inputs;
 };
 
 
