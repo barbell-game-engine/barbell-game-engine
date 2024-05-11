@@ -8,17 +8,17 @@ public:
   static InputSingleton* GetInstance();
   void Update();
 
-  bool w_down = false;
-  bool a_down = false;
-  bool s_down = false;
-  bool d_down = false;
-  bool quit = false;
+  bool w_down;
+  bool a_down;
+  bool s_down;
+  bool d_down;
+  bool quit;
 private:
-  InputSingleton() {};
+  InputSingleton();
 
   static InputSingleton* instance;
 
-  
+
 };
 
 #endif

@@ -11,6 +11,14 @@ InputSingleton* InputSingleton::GetInstance(){
   return instance;
 }
 
+InputSingleton::InputSingleton(){
+    w_down = false;
+    a_down = false;
+    s_down = false;
+    d_down = false;
+    quit = false;
+}
+
 void InputSingleton::Update(){
   SDL_Event event;
 

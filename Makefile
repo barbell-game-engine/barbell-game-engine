@@ -30,15 +30,13 @@ windows:
 
 macos:
 	mkdir $(MAC_DIST_DIR)
-	g++ -std=c++11 engine/engine_main.cc -o main.exe \
-	`$/(SDLDIR)/SDL-$(SDL_VERSION)/i686-w64-mingw32/bin/sdl2-config --cflags`\
-	`$/(SDLDIR)/SDL-$(SDL_VERSION)/i686-w64-mingw32/bin/sdl2-config --libs` \
+	g++ engine/engine_main.cc $(SRCS) -o $(MAC_DIST_DIR)/main \
 	-I$(INCLUDEDIR) \
-	-I$(SRCDIR)
-	cp $(SDLDIR)/SDL2-$(SDL_VERSION)/x86_64-w64-mingw32/bin/SDL2.dll $(MAC_DIST_DIR)
-	mkdir $(MAC_DIST_DIR)/assets
-	cp assets $(WIN_DIST_DIR)/assets /e
+	-I$(SDLDIR)/SDL2-$(SDL_VERSION)/x86_64-w64-mingw32/include \
+	-L$(SDLDIR)/SDL2-$(SDL_VERSION)/x86_64-w64-mingw32/lib
+	cp $(SDLDIR)\SDL2-$(SDL_VERSION)\x86_64-w64-mingw32\bin\SDL2.dll $(WIN_DIST_DIR)
 
+	#-l SDL2-$(SDL_VERSION)
 
 web:
 	if exist $(WEB_DIST_DIR) rmdir /s /q $(WEB_DIST_DIR)
