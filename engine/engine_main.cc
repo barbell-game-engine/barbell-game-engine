@@ -1,7 +1,6 @@
 #include "main.hh"
 
 DevMain devMain;
-InputSingleton* inputs;
 
 #ifdef __EMSCRIPTEN__
 #include "emscripten.h"
@@ -21,10 +20,7 @@ void mainloop(){
 
 int main(int argc, char* argv[])
 {
-  devMain = DevMain();
   devMain.Init();
-
-  inputs = InputSingleton::GetInstance();
 
   #ifdef __EMSCRIPTEN__
   emscripten_set_main_loop(mainloop, 0, 1);
